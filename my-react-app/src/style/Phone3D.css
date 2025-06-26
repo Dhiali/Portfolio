@@ -1,1 +1,80 @@
 /* Phone3D.css file cleared as requested. */
+
+.phone-svg-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: auto; /* Allow pointer events for children */
+}
+
+.phone-svg {
+  width: 90%; /* Reasonable size for visibility */
+  height: auto;
+  max-height: 100%;
+  display: block;
+  animation: phone-vibrate-pause 4s steps(1, end) infinite;
+}
+
+@keyframes phone-vibrate {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-0.3px, 0.2px) rotate(-0.2deg); }
+  40% { transform: translate(-0.2px, -0.4px) rotate(0.2deg); }
+  60% { transform: translate(0.4px, 0.2px) rotate(0deg); }
+  80% { transform: translate(0.2px, -0.3px) rotate(0.2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes phone-vibrate-pause {
+  0%, 49.99% {
+    /* Vibrate for first 2s */
+    animation-timing-function: linear;
+    /* Use the vibration keyframes as a step */
+    /* Will be overridden below */
+  }
+  50%, 100% {
+    /* Pause for next 2s */
+    transform: none;
+  }
+}
+
+.phone-svg {
+  animation: none;
+}
+
+.phone-svg.vibrating {
+  animation: phone-vibrate 0.38s linear infinite;
+}
+
+/* JS/React will toggle the .vibrating class for 2s, then remove for 2s, in a loop */
+
+.accept-btn-overlay {
+  position: absolute;
+  right: 8%; /* Adjust as needed for precise alignment */
+  bottom: 10%;
+  width: 70px;
+  height: 70px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  outline: none;
+  pointer-events: auto;
+}
+
+.accept-btn-overlay:hover {
+  cursor: pointer;
+}
+
+.accept-btn-overlay:active {
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+}
+
+

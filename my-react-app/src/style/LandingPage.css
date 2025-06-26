@@ -29,7 +29,7 @@ body, html, #root {
   border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
   z-index: 1;
   pointer-events: none;
-  animation: blobMove 12s ease-in-out infinite alternate;
+  animation: blobMove 30s ease-in-out infinite alternate;
 }
 
 @keyframes blobMove {
